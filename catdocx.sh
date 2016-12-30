@@ -11,6 +11,6 @@ else
 # Unzip the docx file, and grab just the text with sed
 # This also replaces opening <w:r> tags with newlines
 # The final `sed G` double spaces the output
-unzip -p "$filename" | grep '<w:r' | sed 's/<w:p[^<\/]*>/ \
+unzip -p "$filename" | grep --text '<w:r' | sed 's/<w:p[^<\/]*>/ \
 /g' | sed 's/<[^<]*>//g' | grep -v '^[[:space:]]*$' | sed G
 fi
